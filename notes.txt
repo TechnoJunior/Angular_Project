@@ -1,0 +1,36 @@
+1) Create Component
+2) Create Service
+   -> Import Modules (HttpClient and Observable)
+3) Register Service
+   -> app.module.ts
+   -> import service
+   -> add it providers list
+4) Add Modules in app.module.ts
+   -> HttpClientModule @angular/common/http
+   -> FormsModules/ReactiveFormsModule @angular/forms
+   -> Import :[HttpClientModule, FormsModules, ReactiveFormsModule]
+
+5) Add methods in service
+   -> Add variable in Constructor
+   -> private http : HttClient
+   -> readonly api_url
+   -> getstudents() : observable<any[]>
+   -> this.http.get();
+
+6) Import the service in Component
+   -> initialize the constructor with service variable
+   -> constructor(private student : studentservice){}
+   -> student : any
+
+
+
+Create API in .NET
+Configure CORS and JSON in App_Start/WebApiConfig.cs
+============================================================
+Install-Package Microsoft.AspNet.WebApi.Cors
+
+using System.Web.Http.Cors;
+using System.Net.Http.Headers;
+
+config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
