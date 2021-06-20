@@ -1,2 +1,16 @@
 <h1>{{ title }}</h1>
 
+<table>
+    <tr>
+        <th>Roll No</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+    </tr>
+    <tr *ngFor = "let student of students">
+        <td>{{ student.S_Id }}</td>
+        <td>{{ student.S_Name }}</td>
+        <td>{{ student.S_Age }}</td>
+        <td>{{ student.S_Email }}</td>
+    </tr>
+</table>
