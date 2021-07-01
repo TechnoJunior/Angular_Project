@@ -1,1 +1,16 @@
-<p>add-student works!</p>
+<div>
+    <div class="row">
+        <div class="ml-3 bd-highlight" style="width: 60%">
+            Id : <input type="text" class="form-control" [(ngModel)]="roll" placeholder="Enter Student Id"/>
+            Name : <input type="text" class="form-control" [(ngModel)]="name" placeholder="Enter Student Name"/>
+            Email : <input type="text" class="form-control" [(ngModel)]="email" placeholder="Enter Student Email"/>
+            City : <input type="text" class="form-control" [(ngModel)]="city" placeholder="Enter Student City"/>
+        </div>
+        <div class="ml-3 bd-highlight" style="width: 60%">
+            <img [src]="photopath" height="250px" width="200px">
+            <input type="file" (change)="uploadPhoto($event)" class="mt-2" />
+        </div>
+    </div>
+    <button class="btn btn-primary" type="button" (click)="addStudent()" *ngIf="data.roll==0">Add</button>
+    <button class="btn btn-primary" type="button" (click)="updateStudent()" *ngIf="data.roll!=0">Update</button>
+</div>

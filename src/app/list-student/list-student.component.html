@@ -1,20 +1,94 @@
-<p>{{ title }}</p>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="showModal()">
+    Add Student
+</button>
+  
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> -->
+    <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">{{ modalTitle }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-add-student [data]="studentdata" *ngIf="to_show_modal">
+            {{studentdata.name}}
+          </app-add-student>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Insert</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Roll No</th>
+            <th scope="col">
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"></path>
+      </svg>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Id Filter" aria-label="Input group example" aria-describedby="basic-addon1" [(ngModel)]="idFilter" (keyup)="filterdata()">
+                  </div>
+            </th>
+            <th scope="col">
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"></path>
+      </svg>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Name Filter" aria-label="Input group example" aria-describedby="basic-addon1" [(ngModel)]="nameFilter" (keyup)="filterdata()">
+                  </div>
+            </th><th scope="col">
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"></path>
+      </svg>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Email Filter" aria-label="Input group example" aria-describedby="basic-addon1" [(ngModel)]="emailFilter" (keyup)="filterdata()">
+                  </div>
+            </th><th scope="col">
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"></path>
+      </svg>
+                    </span>
+                    <input type="text" class="form-control" placeholder="City Filter" aria-label="Input group example" aria-describedby="basic-addon1" [(ngModel)]="cityFilter" (keyup)="filterdata()">
+                  </div>
+            </th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        <tr>
+            <th scope="col">Id</th>
             <th scope="col">Name</th>
-            <th scope="col">Age</th>
             <th scope="col">Email</th>
+            <th scope="col">City</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delet</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor = "let student of students">
-            <td>{{ student.S_Id }}</td>
-            <td>{{ student.S_Name }}</td>
-            <td>{{ student.S_Age }}</td>
-            <td>{{ student.S_Email }}</td>
+            <td>{{ student.Id }}</td>
+            <td>{{ student.Name }}</td>
+            <td>{{ student.Email }}</td>
+            <td>{{ student.City }}</td>
+            <td><img [src]="student.Photo" height="250px" width="200px"></td>
+            <td><button class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="editStudent(student)">Edit</button></td>
+            <td><button (click)="deleteStudent(student)">Delete</button></td>
         </tr>
     </tbody>
 </table>
